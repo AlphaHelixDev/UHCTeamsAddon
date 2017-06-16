@@ -1,0 +1,5 @@
+name: TeamAddon
+author: AlphaHelix
+version: 1.0
+description: Adds in teams
+main: de.alphahelix.teamsaddon.TeamsAddon
