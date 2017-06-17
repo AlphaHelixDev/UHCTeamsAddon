@@ -1,6 +1,7 @@
 package de.alphahelix.teamsaddon.inventories;
 
 import de.alphahelix.alphalibary.inventorys.InventoryBuilder;
+import de.alphahelix.alphalibary.utils.Util;
 import de.alphahelix.teamsaddon.TeamsAddon;
 import de.alphahelix.teamsaddon.instances.Team;
 import de.alphahelix.teamsaddon.instances.TeamSBObject;
@@ -22,14 +23,14 @@ public class TeamInventory {
             public void onClick(PlayerInteractEvent e) {
                 if (!GState.is(GState.LOBBY)) return;
                 if (e.getItem() == null) return;
-                if (e.getItem().getType() != TeamsAddon.getTeamOptions().getIcon().getItemStack().getType()) return;
+                if(!Util.isSame(e.getItem(), TeamsAddon.getTeamOptions().getIcon().getItemStack())) return;
 
                 openInv(e.getPlayer());
             }
         }, UHC.getInstance());
     }
 
-    public static void openInv(Player p) {
+    private static void openInv(Player p) {
         Team currentTeam = Team.getTeamByPlayer(p);
 
         InventoryBuilder ib = new InventoryBuilder(
